@@ -1,0 +1,148 @@
+Funksjon 1 — Registrere ansatte som er ute av kontoret
+
+Resepsjonisten må kunne «clocke ut» ansatte som forlater kontoret (f.eks. møte eller lunsj). Dashbordet viser hvem som er inne og hvem som er ute.
+
+Når resepsjonisten klikker ‘Out’ for en valgt ansatt, må hun angi fraværets lengde i minutter. Systemet skal beregne og vise varigheten 
+(i timer og minutter dersom ≥ 60 min) og forventet tilbakekomsttid i tabellen.
+
+Ansattens status endres fra In til Out. Når de kommer tilbake og resepsjonisten klikker ‘In’, skal status endres fra Out til In, og feltene Out Time, 
+Duration og Expected Return Time skal tømmes.
+
+Hvis en ansatt har vært ute lenger enn oppgitt tid, må en toast-notifikasjon dukke opp med bilde, fornavn, etternavn og hvor lenge de har vært ute. 
+Notifikasjonen må bli liggende til resepsjonisten lukker den, og den skal vises kun én gang per overtredelse (må kunne ryddes av resepsjonisten eller videresendes til leder).
+
+
+
+Funksjon 2 — Spor leveringer
+
+På samme side må resepsjonisten kunne registrere dagens leveringsførere i et «Schedule Delivery»-område ved arbeidsdagens start. Informasjon: kjøretøytype (MC eller bil), 
+fornavn, etternavn, telefon, leveringsadresse og forventet tilbakekomsttid.
+
+Når resepsjonisten klikker ‘Add’ legges dette til i en Delivery Board-tabell. Det skal brukes ikon for kjøretøy i raden (MC/Car) for rask gjenkjenning.
+
+Hvis forventet returtid har passert og føreren ikke er returnert, må en toast-notifikasjon vises med navn, telefon, estimert returtid og adresse slik at resepsjonisten kan 
+følge opp.
+
+Når føreren returnerer, velger resepsjonisten raden og klikker ‘Clear’ for å fjerne raden og slette objektet. Det må være en bekreftelses-popup for å unngå uhell.
+
+
+
+Funksjon 3 — Digital klokke
+
+Nederst på siden skal gjeldende dato og tid oppdateres hvert sekund i formatet: Dag Måned År Time:Minutt:Sekund.
+
+Funksjon 4 — Branding
+
+Selskapets logo må vises, og kun spesifiserte fonter og farger fra Brand Profile skal brukes for web-elementene. 
+
+
+
+
+
+WeDeliverTECH™ har gitt oss en enkel mock-up av layouten de ønsker at mottaksdashbordet skal følge:
+
+📐 Dashbord-layout
+
+(Her viser de sannsynligvis en skisse, bilde eller grafikk.)
+
+Din oppgave som utvikler er å sørge for at all nødvendig funksjonalitet er implementert i henhold til kunde­kravene som ledelsen i WeDeliverTECH™ har spesifisert. 
+
+
+
+
+
+Instruksjoner – Prosjekt­spesifikasjoner
+
+Ledelsen i WeDeliverTECH™ har opplyst at deres interne IT-avdeling skal vedlikeholde webapplikasjonen etter at den blir levert. 
+Lederen for IT-avdelingen har derfor bedt om at følgende skal brukes i prosjektet:
+
+Bootstrap
+
+JavaScript/jQuery
+
+OOP-konsepter (objektorientert programmering)
+
+
+Siden IT-avdelingen ikke bruker NodeJS, ønsker de at NodeJS og NPM ikke skal brukes i dette prosjektet. Du kan bruke eksterne biblioteker eller plugins hvis du ønsker, 
+men minimumskravene (Bootstrap, JavaScript/jQuery og OOP) må oppfylles.
+
+Husk å inkludere instruksjoner i readme-filen for hvordan man skal ta i bruk eksterne biblioteker eller plugins.
+
+All JavaScript-funksjonalitet som beskrives i kravene for applikasjonen skal ligge i en egen JS-fil i riktig mappe. Denne filen skal hete:
+
+wdt_app.js
+
+
+Det forventes også at du tar hensyn til brukeropplevelsen. Derfor skal knapper på dashbordet ha en visuell reaksjon når brukeren holder muspekeren over dem 
+(f.eks. en enkel animasjon).
+
+Du kan legge inn flere animasjoner i applikasjonen hvis du mener det forbedrer brukeropplevelsen.
+
+For å beskytte identiteten til ansatte har selskapet bedt deg om å bruke følgende API for å hente demonstrasjonsdata om fem ansatte:
+
+http://backend.restapi.co.za/items/staff
+
+
+📦 Objekter – krav til OOP-struktur
+
+IT-avdelingen har gitt et diagram som viser hvilke objekttyper som skal eksistere i systemet, inkludert metoder og egenskaper (properties).
+
+(Her refereres det til et diagram som sikkert viser Staff-objektet, DeliveryDriver-objektet osv.)
+
+Når websiden lastes inn første gang, skal Staff-tabellen fylles med nyopprettede objekter (basert på dette diagrammet) som bruker dataene fra API-et.
+
+De fem ansatte i tabellen skal være fem ulike personer.
+
+
+🚚 Validering av leveringsdata
+
+Resepsjonisten fyller inn leveringsinformasjon manuelt. All brukerinput i systemet må valideres, og minst følgende krav må være oppfylt:
+
+alle felter må være utfylt
+
+riktig datatype må brukes
+
+tidspunkt må være i riktig format: hh:mm
+
+Denne inputen skal deretter brukes til å opprette et nytt DeliveryDriver-objekt, og tabellen for sjåfører skal fylles med dataene fra objektet.
+
+
+🗂️ Jira – prosjektplan
+
+Det kreves også at du lager og vedlikeholder en prosjektplan i Jira. Dette innebærer:
+
+Sprints
+
+Epics
+
+Issues
+
+Et Board som oppdateres etterhvert
+
+Oppgaver som tildeles riktig teammedlem (selv om du jobber alene, skal navnet ditt stå der)
+
+
+Prosjektets tidslinje skal samsvare med tiden studentene faktisk har fått:
+
+4 uker for fulltidsstudenter
+
+8 uker for deltidsstudenter
+
+
+🧭 Navigasjonsmeny (Navbar)
+
+Selv om dette bare er fase 1, planlegger ledelsen mer funksjonalitet i fremtidige faser. Derfor skal webapplikasjonen ha en navbar øverst, med følgende menyvalg:
+
+(Her viser de trolig et bilde med: Dashboard, Inventory, Orders osv.)
+
+
+Menypunktene Inventory og Orders skal være skjult som undermenyer, og de skal ikke være operative ennå — klikking skal ikke gjøre noe.
+
+Dashboard skal være aktiv som standard.
+
+
+Klikking på Dashboard skal ta brukeren til hovedsiden med tabellene for ansatte og leveringer.
+
+🎨 WeDeliverTECH™ – Brandingprofil
+
+Logo: (Logoen ligger i prosjektets repository)

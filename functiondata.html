@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const addNumber = y => x => x + y;
+        
+        const add2 = addNumber(2);
+        const add3 = addNumber(3);
+        const add4 = addNumber(4);
+        
+        console.log(add2(3));
+
+
+
+        const retractNumber = y => x => x - y; 
+
+        const retract3 = retractNumber(3); 
+        console.log(retract3(2)); 
+        // Answer is - 1 
+        // 2 - 3 = -1
+        // X = 2 
+        // Y = 3
+
+
+
+        const addAndMultiply = z => y => x => (z + y) * x; 
+
+        const zAdd2 = addAndMultiply(2); 
+        const zAndY3 = zAdd2(3); 
+        console.log(zAndY3(5)); 
+
+
+
+        const addMultiplyAndDivide = z => y => x => a => (z + y) * x / a; 
+
+        const addNumberZ = addMultiplyAndDivide(2); 
+        const addNumberY = addNumberZ(3); 
+        const multiNumber = addNumberY(5); 
+        console.log(multiNumber(5)); 
+
+
+        const x = (15 - 5) / 2; 
+
+        const y = 2 * 5 + 5; 
+
+        const z = x + y; 
+        console.log(z); 
+    </script>
+</body>
+</html>
