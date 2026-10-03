@@ -228,6 +228,10 @@ for (let i = 0; i < 20; i++)
 
     let hiddenSigmoidGradient1 = prediction * (1 - prediction);
 
+    let gradientWeight1 = hiddenGradient1 * hiddenSigmoidGradient1 * input1;
+
+    let backpropGradientBias1 = hiddenGradient1 * hiddenSigmoidGradient1;
+
     // Viser hvor høy loss er på foreløpig prediction
     let error = loss(finalPrediction, target);
 
@@ -289,6 +293,14 @@ for (let i = 0; i < 20; i++)
     console.log("\n");
 
     console.log("HiddenSigmoidGradient1:", hiddenSigmoidGradient1);
+
+    console.log("\n");
+
+    console.log("GradientWeight1:", gradientWeight1);
+
+    console.log("\n");
+
+    console.log("BackpropGradientBias1:", backpropGradientBias1);
 
     console.log("\n");
 
