@@ -230,6 +230,8 @@ for (let i = 0; i < 20; i++)
 
     let gradientWeight1 = hiddenGradient1 * hiddenSigmoidGradient1 * input1;
 
+    let gradientWeight2 = hiddenGradient1 * hiddenSigmoidGradient1 * input2;
+
     let backpropGradientBias1 = hiddenGradient1 * hiddenSigmoidGradient1;
 
     // Viser hvor høy loss er på foreløpig prediction
@@ -254,8 +256,8 @@ for (let i = 0; i < 20; i++)
 
     let currentGradientBias2 = gradientBias2(input1, input2, target, weight3, weight4);
 
-    // Justerer begge vekter
-    weight1 = weight1 - (currentGradient1 * learningRate);
+    // Justerer alle vekter
+    weight1 = weight1 - (gradientWeight1 * learningRate);
 
     weight2 = weight2 - (currentGradient2 * learningRate);
 
@@ -267,7 +269,7 @@ for (let i = 0; i < 20; i++)
 
     weight6 = weight6 - (currentGradient6 * learningRate);
 
-    bias1 = bias1 - (currentGradientBias1 * learningRate);
+    bias1 = bias1 - (backpropGradientBias1 * learningRate);
 
     bias2 = bias2 - (currentGradientBias2 * learningRate);
 
