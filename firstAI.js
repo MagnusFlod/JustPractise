@@ -97,6 +97,7 @@ function gradient1(input1, input2, target, weight1, weight2)
     let predictionError = -2 * (target - prediction);
 
     // Gradient på sigmoid. Hvor mye endrer sigmoid seg når z endrer seg
+    // Vi trenger denne fordi det ville ignorert at sigmoid demper endringer mellom z og prediction hvis den ikke var der
     let sigmoidGradient = prediction * (1 - prediction);
 
     // Finner den faktiske gradienten. Hvor mye loss gir en endring av vekt
@@ -224,6 +225,8 @@ for (let i = 0; i < 20; i++)
 
     let outputGradient = -2 * (target - finalPrediction) * finalPrediction * (1 - finalPrediction);
 
+
+    // Start for backprop1
     let hiddenGradient1 = outputGradient * weight5;
 
     let hiddenSigmoidGradient1 = prediction * (1 - prediction);
@@ -233,6 +236,17 @@ for (let i = 0; i < 20; i++)
     let gradientWeight2 = hiddenGradient1 * hiddenSigmoidGradient1 * input2;
 
     let backpropGradientBias1 = hiddenGradient1 * hiddenSigmoidGradient1;
+
+    // Start for backprop2
+    let hiddenGradient2 = outputGradient * weight6;
+
+    let hiddenSigmoidGradient2 = prediction2 * (1 - prediction2);
+
+    let gradientWeight3 = hiddenGradient2 * hiddenSigmoidGradient2 * input1;
+
+    let gradientWeight4 = hiddenGradient2 * hiddenSigmoidGradient2 * input2;
+
+    let backpropGradientBias2 = hiddenGradient2 * hiddenSigmoidGradient2;
 
     // Viser hvor høy loss er på foreløpig prediction
     let error = loss(finalPrediction, target);
@@ -259,11 +273,11 @@ for (let i = 0; i < 20; i++)
     // Justerer alle vekter
     weight1 = weight1 - (gradientWeight1 * learningRate);
 
-    weight2 = weight2 - (currentGradient2 * learningRate);
+    weight2 = weight2 - (gradientWeight2 * learningRate);
 
-    weight3 = weight3 - (currentGradient3 * learningRate);
+    weight3 = weight3 - (gradientWeight3 * learningRate);
 
-    weight4 = weight4 - (currentGradient4 * learningRate);
+    weight4 = weight4 - (gradientWeight4 * learningRate);
 
     weight5 = weight5 - (currentGradient5 * learningRate);
 
@@ -271,7 +285,7 @@ for (let i = 0; i < 20; i++)
 
     bias1 = bias1 - (backpropGradientBias1 * learningRate);
 
-    bias2 = bias2 - (currentGradientBias2 * learningRate);
+    bias2 = bias2 - (backpropGradientBias2 * learningRate);
 
     console.log("Input1:", input1);
     console.log("Input2:", input2);
@@ -288,6 +302,7 @@ for (let i = 0; i < 20; i++)
     console.log("Gradient5:", currentGradient5);
     console.log("Gradient6:", currentGradient6);
 
+    // Backprop1
     console.log("\n");
 
     console.log("HiddenGradient1:", hiddenGradient1);
@@ -302,9 +317,37 @@ for (let i = 0; i < 20; i++)
 
     console.log("\n");
 
+    console.log("GradientWeight2:", gradientWeight2);
+
+    console.log("\n");
+
     console.log("BackpropGradientBias1:", backpropGradientBias1);
 
     console.log("\n");
+
+
+    // Backprop2
+    console.log("GradientWeight2:", gradientWeight2);
+
+    console.log("\n");
+
+    console.log("HiddenGradient2:", hiddenGradient2);
+
+    console.log("\n");
+
+    console.log("HiddenSigmoidGradient2:", hiddenSigmoidGradient2);
+
+    console.log("\n");
+
+    console.log("GradientWeight3:", gradientWeight3);
+
+    console.log("\n");
+
+    console.log("GradientWeight4:", gradientWeight4);
+
+    console.log("\n");
+
+    console.log("BackpropGradientBias2:",backpropGradientBias2);
 
     console.log("Weight1:", weight1);
     console.log("Weight2:", weight2);
